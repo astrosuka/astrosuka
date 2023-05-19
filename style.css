@@ -1,0 +1,15 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: small;
+    background-color: black;
+    padding: 3em; 
+}
+
+*{
+    font-weight: normal !important;
+    color: #00FF00;
+}
+
+p {
+    padding-right: 75%;
+}

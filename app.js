@@ -1,21 +1,32 @@
 const crusher = new Tone.BitCrusher(4).toDestination();
+const rvb = new Tone.Reverb(20).toDestination();
 const pingPong = new Tone.PingPongDelay("8n", 0.3).connect(crusher);
-const synth = new Tone.Synth().connect(pingPong);
+const synth1 = new Tone.Synth().connect(pingPong);
 const synth2 = new Tone.FMSynth().toDestination();
+const synth3 = new Tone.MembraneSynth().connect(crusher);
 const keyboard = new AudioKeys({
     rows: 2
 });
 
-
-const temita = new Tone.Loop(function (time) {
-    synth.triggerAttackRelease(randomNote(), "8n", time);
+const loop1 = new Tone.Loop(function (time) {
+    synth1.triggerAttackRelease(randomNote(), "8n", time);
     document.getElementById("tempo").innerHTML = Tone.Transport.bpm.value;
 }, "8n").start(0);
 
+loop1.probability = 0.6;
 
-const temita2 = new Tone.Loop(function (time) {
+
+const loop2 = new Tone.Loop(function (time) {
     synth2.triggerAttackRelease(randomNote2(), "8n", time);
 }, "1n").start(0);
+
+loop2.probability = 0.5;
+
+const loop3 = new Tone.Loop(function (time) {
+    synth3.triggerAttackRelease(60, "8n", time);
+}, "8n").start(0);
+
+loop3.probability = 0.3;
 
 function randomNote() {
     // const escala = ["272.2", "302", "360.6", "395.3", "453.7", "544.4", "604.1", "721.2"];
@@ -50,5 +61,6 @@ function lentito() {
 
 keyboard.down((key) => {
     Tone.start();
-    synth2.triggerAttackRelease(key.frequency, "6n");
+    synth1.triggerAttackRelease(key.frequency, "16n");
+    // console.log(key)
 })

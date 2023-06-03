@@ -2,6 +2,9 @@ const crusher = new Tone.BitCrusher(4).toDestination();
 const pingPong = new Tone.PingPongDelay("8n", 0.3).connect(crusher);
 const synth = new Tone.Synth().connect(pingPong);
 const synth2 = new Tone.FMSynth().toDestination();
+const keyboard = new AudioKeys({
+    rows: 2
+});
 
 
 const temita = new Tone.Loop(function (time) {
@@ -44,3 +47,8 @@ function acelera() {
 function lentito() {
     Tone.Transport.bpm.rampTo(7, 77);
 }
+
+keyboard.down((key) => {
+    Tone.start();
+    synth2.triggerAttackRelease(key.frequency, "6n");
+})

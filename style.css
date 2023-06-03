@@ -1,5 +1,6 @@
 :root {
     --fondo: black;
+    --texto: #00FF00;
   }
 
 body{
@@ -11,7 +12,7 @@ body{
 
 *{
     font-weight: normal !important;
-    color: #00FF00;
+    color: var(--texto);
 }
 
 p {

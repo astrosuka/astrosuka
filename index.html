@@ -25,7 +25,7 @@
     <p>
         <a href="https://docs.google.com/document/d/e/2PACX-1vRDvDAmYuYb2_KCK6sZ3V9WwmCOtHXyiaZ3rDYZTI7aScy3Q6qiDxFWq_TV4gDMrsILEqXHCmg2u7Yn/pub">press</a>
     </p>
-
+    <br>
     <button onclick="playIt()">x</button>
     <button onclick="acelera()">>>></button>
     <button onclick="lentito()"><<<</button>
@@ -34,52 +34,6 @@
 
 
 
-            <script>
-
-                const crusher = new Tone.BitCrusher(4).toDestination();
-                const pingPong = new Tone.PingPongDelay("8n", 0.3).connect(crusher);
-                const synth = new Tone.Synth().connect(pingPong);
-                const synth2 = new Tone.FMSynth().toDestination();
-
-
-                const temita = new Tone.Loop(function (time) {
-                    synth.triggerAttackRelease(randomNote(), "8n", time);
-                    document.getElementById("tempo").innerHTML = Tone.Transport.bpm.value;
-                }, "8n").start(0);
-
-
-                const temita2 = new Tone.Loop(function (time) {
-                    synth2.triggerAttackRelease(randomNote2(), "8n", time);
-                }, "1n").start(0);
-
-                function randomNote() {
-                    // const escala = ["602", "643", "708", "828", "887", "950", "1052"];
-                    const escala = ["A3", "A4", "C4", "B4", "E4", "F3", "G4", "A4"];
-                    return escala[Math.floor(Math.random() * escala.length)];
-                }
-
-                function randomNote2() {
-                    // const escala = ["602", "643", "708", "828", "887", "950", "1052"];
-                    const escala = ["A2", "A3", "C3", "B3", "E3", "F2", "G3", "A3"];
-                    return escala[Math.floor(Math.random() * escala.length)];
-                }
-
-                function playIt() {
-                    Tone.start();
-                    Tone.Transport.start();
-                }
-
-                function stopIt() {
-                    Tone.Transport.stop();
-                }
-                Tone.Transport.bpm.value = 140;
-                function acelera() {
-                    Tone.Transport.bpm.rampTo(8000, 40);
-                }
-                function lentito() {
-                    Tone.Transport.bpm.rampTo(1, 80);
-                }
-
-            </script>
+     <script src="code.js"></script>
 </body>
 </html>

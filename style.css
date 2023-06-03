@@ -1,7 +1,11 @@
+:root {
+    --fondo: black;
+  }
+
 body{
     font-family: 'Courier New', Courier, monospace;
     font-size: small;
-    background-color: black;
+    background-color: var(--fondo);
     padding: 3em; 
 }
 
@@ -12,4 +16,9 @@ body{
 
 p {
     padding-right: 75%;
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--fondo);
 }

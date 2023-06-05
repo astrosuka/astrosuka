@@ -24,21 +24,28 @@ loop2.probability = 0.5;
 
 const loop3 = new Tone.Loop(function (time) {
     synth3.triggerAttackRelease(60, "8n", time);
-}, "8n").start(0);
+}, "8n").start(10);
 
 loop3.probability = 0.3;
+
+// const loopFx = new Tone.Loop(function (time){
+
+// }, "1n").start(0);
+
 
 function randomNote() {
     // const escala = ["272.2", "302", "360.6", "395.3", "453.7", "544.4", "604.1", "721.2"];
     // const escala = ["602", "643", "708", "828", "887", "950", "1052"];
-    const escala = ["A3", "A4", "C4", "B4", "E4", "F3", "G4", "A4"];
+    // const escala = ["A3", "A4", "C4", "B4", "E4", "F3", "G4", "A4"];
+    const escala =  ['C4', 'Db4', 'Eb4', 'G4', 'Ab4'];
     return escala[Math.floor(Math.random() * escala.length)];
 }
 
 function randomNote2() {
     // const escala = ["98.83", "113.4", "136.1", "151", "180.3", "197.7", "226.9"];
     // const escala = ["602", "643", "708", "828", "887", "950", "1052"];
-    const escala = ["A2", "A3", "C3", "B3", "E3", "F2", "G3", "A3"];
+    // const escala = ["A2", "A3", "C3", "B3", "E3", "F2", "G3", "A3"];
+    const escala =  ['C4', 'Db4', 'Eb4', 'G4', 'Ab4'];
     return escala[Math.floor(Math.random() * escala.length)];
 }
 Tone.Transport.bpm.value = 142.6167756;
@@ -62,5 +69,5 @@ function lentito() {
 keyboard.down((key) => {
     Tone.start();
     synth1.triggerAttackRelease(key.frequency, "16n");
-    // console.log(key)
 })
+

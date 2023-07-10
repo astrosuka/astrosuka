@@ -17,9 +17,25 @@ body{
     color: var(--texto);
 }
 
-#enlaces {
-    padding-right: 75%;
+h2 {
+    margin: 0%;
+    padding: 0%;
 }
+
+#enlaces {
+    /* padding-right: 75%; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+
+}
+
+#enlaces a {
+    padding-right: 0.75em;
+}
+
+
 
 button {
     font-family: var(--font);
@@ -44,6 +60,24 @@ input[type="checkbox"] {
     from {color: var(--texto);}
     to {color: white;}
   }
+
+.contenedor {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+@media (max-width: 800px){
+    #enlaces {
+        flex-direction: column;
+        line-height: 1.5em;
+    }
+    
+#soni2 {
+
+margin-top: 3em;}
+}
 
 
 

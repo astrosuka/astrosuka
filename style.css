@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+
 :root {
     /* --fondo: rgb(41, 39, 39); */
     --fondo: black;
-    --texto: #00FF00;
-    --font: 'Courier New', Courier, monospace;
+    /* --texto: #00FF00; */
+    --texto: #bbb;
+    --link: #fff;
+    /* --font: 'Courier New', Courier, monospace; */
+    --font: 'Syne Mono', monospace;
   }
 
 body{
@@ -58,7 +63,7 @@ input[type="checkbox"] {
 
 @keyframes estrobo {
     from {color: var(--texto);}
-    to {color: white;}
+    to {color: var(--link);}
   }
 
 .contenedor {
@@ -79,6 +84,9 @@ input[type="checkbox"] {
 margin-top: 3em;}
 }
 
+a:hover {
+    color: var(--link);
+}
 
 
 

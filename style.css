@@ -121,8 +121,19 @@ a:hover {
     content: " / ";
 }
 
+.press li {
+    padding-top: 0.25em;
+    font-style: italic;
+}
+
+.press li a {
+    font-style: normal;
+    /* color: var(--link); */
+}
 
 
+
+/* !!!!!!!!!! CELULAL !!!!!!!!!!!!!!! */
 
 @media (max-width: 800px){
     #enlaces {
@@ -146,6 +157,8 @@ ul {
 
 }
 
+
+
 .c1 {
     display: flex;
     flex-direction: column;
@@ -155,4 +168,19 @@ ul {
     content: "";
     color: var(--texto);
 }
+
+.press {
+    list-style-type: none;
+}
+.press li {
+    padding-top: 1em;
+    
+}
+
+.press li a {
+    display: flex;
+    flex-direction: column;
+}
+
+
 }

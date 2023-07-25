@@ -14,7 +14,7 @@ body{
     font-family: var(--font);
     font-size: small;
     background-color: var(--fondo);
-    padding: 3em; 
+    /* padding: 3em;  */
 }
 
 *{
@@ -70,7 +70,56 @@ input[type="checkbox"] {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    padding: 3em; 
 }
+
+
+
+
+a:hover {
+    color: var(--link);
+}
+
+
+
+.works li {
+    padding-top: 0.25em;
+
+}
+
+.c0-link{
+    /* color: blue; */
+    animation-name: estrobo;
+    animation-duration: 1.8s;
+    animation-iteration-count: infinite;  
+    animation-direction: alternate-reverse;
+}
+.trabajo {
+   color: #ddd;
+    font-style: italic;
+}
+
+.artista {
+    /* color: yellow; */
+    color: yellowgreen;
+    
+}
+
+.artista::after {
+    content: " - ";
+    color: var(--texto);
+}
+
+.sello {
+    /* color: purple; */
+    font-style: normal;
+}
+
+.sello::after {
+    content: " / ";
+}
+
+
 
 
 @media (max-width: 800px){
@@ -79,14 +128,19 @@ input[type="checkbox"] {
         line-height: 1.5em;
     }
     
+    
 #soni2 {
 
 margin-top: 3em;}
+
+ul {
+    padding-left: 1em;
+
 }
 
-a:hover {
-    color: var(--link);
+.works li {
+    padding-top: 1em;
+    padding-left: 0;
+
 }
-
-
-
+}

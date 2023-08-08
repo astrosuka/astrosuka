@@ -131,6 +131,9 @@ a:hover {
     /* color: var(--link); */
 }
 
+.flor {
+    width: 20%;
+}
 
 
 /* !!!!!!!!!! CELULAL !!!!!!!!!!!!!!! */
@@ -182,5 +185,8 @@ ul {
     flex-direction: column;
 }
 
+.flor {
+    width: 99%;
+}
 
 }

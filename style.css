@@ -8,11 +8,16 @@
     --link: #fff;
     /* --font: 'Courier New', Courier, monospace; */
     --font: 'Syne Mono', monospace;
+    --pad: 0em;
+    --texto-general: small;
+    --main-titulo: 1.5em;
+    --int-titulo: 1em;
+
   }
 
 body{
     font-family: var(--font);
-    font-size: small;
+    font-size: var(--texto-general);
     background-color: var(--fondo);
     /* padding: 3em;  */
 }
@@ -25,6 +30,13 @@ body{
 h2 {
     margin: 0%;
     padding: 0%;
+    font-size: var(--main-titulo);
+}
+
+.title-int{
+    margin: 0%;
+    padding: 0%;
+    font-size: var(--int-titulo);
 }
 
 #enlaces {
@@ -70,9 +82,13 @@ input[type="checkbox"] {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 3em; 
+    padding: var(--pad); 
 }
 
+.cont-int {
+    padding: var(--pad); 
+    padding-top:calc(var(--main-titulo) - var(--int-titulo));
+}
 
 a:hover {
     color: var(--link);
@@ -135,6 +151,12 @@ a:hover {
     width: 20%;
 }
 
+#soni2::after {
+    content: "𝅘𝅥𝅮 QWERTY";
+    color: var(--fondo);
+    background-color: var(--texto);
+}
+
 
 /* !!!!!!!!!! CELULAL !!!!!!!!!!!!!!! */
 
@@ -148,6 +170,10 @@ a:hover {
 #soni2 {
 
 margin-top: 3em;}
+
+#soni2::after {
+    content: "";
+}
 
 ul {
     padding-left: 1em;
@@ -187,6 +213,15 @@ ul {
 
 .flor {
     width: 99%;
+    padding-top: 1em;
+    padding-bottom: 1sem;
+}
+
+.cont-int {
+    padding: 0em; 
+}
+.contenedor {
+    padding: 0em;
 }
 
 }

@@ -50,6 +50,11 @@ h2 {
     font-size: calc(var(--int-titulo) / 1.2);
 }
 
+#nov {
+    position: fixed;
+    bottom: 3em;
+}
+
 .title-int{
     margin: 0%;
     padding: 0%;

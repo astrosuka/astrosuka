@@ -1,23 +1,15 @@
 const soundWorks = [
     {
-        artist: '',
-        release: '',
-        label: '',
-        year: '',
-        role: [''],
-        link: ''
-    },
-    {
-        atist: 'Yoto',
-        release: 'Levure',
-        label: 'Kit Records',
+        artist: 'yoto',
+        release: 'levure',
+        label: 'kit records',
         year: '2024',
-        role: ['Mixing'],
+        role: ['mixing'],
         link: 'https://yoto.bandcamp.com/album/levure'
     },
     {
         artist: 'aguja',
-        release: 'mú​sica electr​ó​nica I',
+        release: 'música electrónica I',
         label: 'unun',
         year: '2023',
         role: ['production', 'mastering'],
@@ -288,3 +280,30 @@ const soundWorks = [
         link: 'https://auralsects.bandcamp.com/album/neempha-ep'
     },
 ];
+
+const worksListContainer = document.querySelector('.works');
+
+for (let work of soundWorks){
+    let listItem = document.createElement('li');
+
+    let release = document.createElement('a');
+    release.textContent = work.release;
+    release.setAttribute('href', work.link);
+    release.setAttribute('target', '_blank');
+
+    let artist = document.createElement('span');
+    artist.textContent = `${work.artist} - `;
+
+    let label = document.createElement('span');
+    label.textContent = ` (${work.label})`;
+
+    let roles = document.createElement('ul');
+    for (let i of work.role){
+        let role = document.createElement('li');
+        role.textContent = ` ${i}`
+        roles.appendChild(role);
+    }
+
+    listItem.append(artist, release, label, roles);
+    worksListContainer.appendChild(listItem);
+}

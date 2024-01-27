@@ -152,11 +152,10 @@ for (let mention of pressMentions){
     title.textContent = mention.title;
     title.setAttribute('href', mention.link);
     title.setAttribute('target', '_blank');
-    listItem.appendChild(title);
 
     let publisher = document.createElement('span');
     publisher.textContent = ` - ${mention.publisher}`;
-    listItem.appendChild(publisher);
+    listItem.append(title, publisher);
 
     pressListContainer.appendChild(listItem);
 }

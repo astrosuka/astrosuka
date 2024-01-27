@@ -141,8 +141,6 @@ const pressMentions = [
     }
 ]
 
-
-
 const pressListContainer = document.querySelector('.press');
 
 for (let mention of pressMentions){
@@ -152,9 +150,12 @@ for (let mention of pressMentions){
     title.textContent = mention.title;
     title.setAttribute('href', mention.link);
     title.setAttribute('target', '_blank');
+    title.classList.add('press-title');
 
     let publisher = document.createElement('span');
     publisher.textContent = ` - ${mention.publisher}`;
+    title.classList.add('press-publisher');
+
     listItem.append(title, publisher);
 
     pressListContainer.appendChild(listItem);

@@ -290,14 +290,18 @@ for (let work of soundWorks){
     release.textContent = work.release;
     release.setAttribute('href', work.link);
     release.setAttribute('target', '_blank');
+    release.classList.add('work-release');
 
     let artist = document.createElement('span');
     artist.textContent = `${work.artist} - `;
+    artist.classList.add('work-artist');
 
     let label = document.createElement('span');
     label.textContent = ` (${work.label})`;
+    label.classList.add('work-label');
 
     let roles = document.createElement('ul');
+    roles.classList.add('work-roles')
     for (let i of work.role){
         let role = document.createElement('li');
         role.textContent = ` ${i}`

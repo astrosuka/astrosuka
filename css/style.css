@@ -12,3 +12,12 @@ body  {
     min-height: 100vh;
     flex-direction: column;
 }
+
+.work-roles li {
+    list-style: none;
+    display: inline;
+}
+
+.work-roles li::before {
+    content: '😎';
+}

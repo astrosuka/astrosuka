@@ -1,8 +1,13 @@
 import './App.css';
 import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
 
 function App() {
-  const fecha = new Date();
+  const [dateState, setDateState] = useState(new Date());
+  useEffect(() => {
+    setInterval(() => setDateState(new Date()), 1000);
+  }, []);
+
   return (
     <>
       <motion.h1
@@ -42,7 +47,7 @@ function App() {
           <a href="https://twitter.com/astrosuka">twitter</a>{' '}
         </div>
       </motion.div>
-      <div className="date">❍ {fecha.toString()}</div>
+      <div className="date">❍ {dateState.toLocaleString()}</div>
     </>
   );
 }

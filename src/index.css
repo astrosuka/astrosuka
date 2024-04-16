@@ -1,0 +1,65 @@
+:root {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  font-weight: 300;
+
+  color-scheme: light dark;
+  --main: #e2e5eb;
+  --bg: #0f1012;
+  --sec: rgb(16, 16, 17);
+  --accent: #ff3c00;
+  color: var(--main);
+  background-color: var(--bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  font-weight: 300;
+  display: inline-block;
+  transition: 300ms background-size, 80ms transform, 550ms color;
+  background: linear-gradient(var(--accent), var(--accent)) bottom / 0px 50px
+    no-repeat;
+  background-position: left bottom;
+  user-select: none;
+}
+a:hover {
+  color: var(--main);
+  text-decoration: none;
+  background-size: 100% 50px;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--bg);
+    background-color: var(--main);
+  }
+}
+
+.date {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 0.75rem;
+}
+
+.mrgn {
+  margin-top: 1.25rem;
+}

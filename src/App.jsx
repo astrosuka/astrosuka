@@ -39,7 +39,7 @@ function App() {
         </p>
         <p>say hi: astrosuka[at]proton[dot]me</p>
 
-        <div className="mrgn">
+        <div className="mrgn links">
           finde me on: <a href="https://astrosuka.bandcamp.com">bandcamp</a>{' '}
           <a href="https://soundcloud.com/astrosuka">soundcloud</a>{' '}
           <a href="https://www.ninaprotocol.com/hubs/astrosuka">nina</a>{' '}

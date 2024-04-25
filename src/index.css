@@ -63,3 +63,9 @@ h1 {
 .mrgn {
   margin-top: 1.25rem;
 }
+
+@media (max-width: 700px) {
+  .links * {
+    display: block;
+  }
+}

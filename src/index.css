@@ -65,7 +65,7 @@ h1 {
 }
 
 @media (max-width: 700px) {
-  .links * {
+  .links > * {
     display: block;
   }
 }

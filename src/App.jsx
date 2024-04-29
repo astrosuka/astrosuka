@@ -1,11 +1,26 @@
 import './App.css';
 import { motion } from 'framer-motion';
 import React, { useState, useEffect } from 'react';
+import sanityClient from './client';
 
 function App() {
   const [dateState, setDateState] = useState(new Date());
   useEffect(() => {
     setInterval(() => setDateState(new Date()), 1000);
+  }, []);
+
+  const [linksData, setLinksData] = useState(null);
+
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "link"] | order(order asc) {
+        linkText,
+        linkUrl
+      }`
+      )
+      .then((data) => setLinksData(data))
+      .catch(console.error);
   }, []);
 
   return (
@@ -40,11 +55,16 @@ function App() {
         <p>say hi: astrosuka[at]proton[dot]me</p>
 
         <div className="mrgn links">
-          finde me on: <a href="https://astrosuka.bandcamp.com">bandcamp</a>{' '}
-          <a href="https://soundcloud.com/astrosuka">soundcloud</a>{' '}
-          <a href="https://www.ninaprotocol.com/hubs/astrosuka">nina</a>{' '}
-          <a href="https://instagram.com/astrosuka">instagram</a>{' '}
-          <a href="https://twitter.com/astrosuka">twitter</a>{' '}
+          finde me on:&nbsp;
+          {linksData &&
+            linksData.map((link, index) => (
+              <span key={index}>
+                <a href={link.linkUrl} target="_blank">
+                  {link.linkText}
+                </a>
+                &nbsp;
+              </span>
+            ))}
         </div>
       </motion.div>
       <div className="date">❍ {dateState.toLocaleString()}</div>

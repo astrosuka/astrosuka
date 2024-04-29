@@ -18,6 +18,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+::selection {
+  color: var(--bg);
+  background-color: var(--main);
+}
+
 a {
   color: inherit;
   font-weight: 300;
@@ -50,6 +55,11 @@ h1 {
   :root {
     color: var(--bg);
     background-color: var(--main);
+  }
+
+  ::selection {
+    color: var(--main);
+    background-color: var(--bg);
   }
 }
 

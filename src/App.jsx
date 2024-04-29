@@ -64,7 +64,6 @@ function App() {
           ))}
 
         <div className="mrgn links">
-          finde me on:&nbsp;
           {linksData &&
             linksData.map((link, index) => (
               <span key={index}>

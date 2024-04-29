@@ -2,6 +2,7 @@ import './App.css';
 import { motion } from 'framer-motion';
 import React, { useState, useEffect } from 'react';
 import sanityClient from './client';
+import BlockContent from '@sanity/block-content-to-react';
 
 function App() {
   const [dateState, setDateState] = useState(new Date());
@@ -23,6 +24,19 @@ function App() {
       .catch(console.error);
   }, []);
 
+  const [aboutData, setAboutData] = useState(null);
+
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "about"] {
+        body
+      }`
+      )
+      .then((data) => setAboutData(data))
+      .catch(console.error);
+  }, []);
+
   return (
     <>
       <motion.h1
@@ -38,21 +52,16 @@ function App() {
         animate={{ translateX: 0 }}
         transition={{ delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
       >
-        <p>musician, visual artist, developer</p>
-        <p>b.1987 ussr. based in south america since 2000</p>
-        <p>
-          co-founded <a href="https://unun.link">unun</a> &{' '}
-          <a href="https://trrueno.bandcamp.com">trrueno</a> experimental music
-          labels
-        </p>
-        <p>
-          1/2 of <a href="https://aguja.re">aguja</a>{' '}
-        </p>
-        <p className="mrgn">
-          I&apos;m currently working as freelance web dev & mixing/mastering
-          engineer
-        </p>
-        <p>say hi: astrosuka[at]proton[dot]me</p>
+        {aboutData &&
+          aboutData.map((text, index) => (
+            <span className="mrgn" key={index}>
+              <BlockContent
+                blocks={text.body}
+                projectId="42d1k3c6"
+                dataset="production"
+              />
+            </span>
+          ))}
 
         <div className="mrgn links">
           finde me on:&nbsp;

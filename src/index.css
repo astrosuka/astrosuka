@@ -62,6 +62,7 @@ h1 {
 
 .mrgn {
   margin-top: 1.25rem;
+  display: block;
 }
 
 @media (max-width: 700px) {

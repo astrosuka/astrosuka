@@ -1,16 +1,15 @@
-import './App.css';
-import { motion } from 'framer-motion';
-import React, { useState, useEffect } from 'react';
-import sanityClient from './client';
-import BlockContent from '@sanity/block-content-to-react';
+import "./App.css";
+import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import Loading from "./components/Loading";
+import sanityClient from "./client";
+import BlockContent from "@sanity/block-content-to-react";
+import Clock from "./components/Clock";
 
 function App() {
-  const [dateState, setDateState] = useState(new Date());
-  useEffect(() => {
-    setInterval(() => setDateState(new Date()), 1000);
-  }, []);
-
+  const [loading, setLoading] = useState(true);
   const [linksData, setLinksData] = useState(null);
+  const [aboutData, setAboutData] = useState(null);
 
   useEffect(() => {
     sanityClient
@@ -22,11 +21,7 @@ function App() {
       )
       .then((data) => setLinksData(data))
       .catch(console.error);
-  }, []);
 
-  const [aboutData, setAboutData] = useState(null);
-
-  useEffect(() => {
     sanityClient
       .fetch(
         `*[_type == "about"] {
@@ -34,8 +29,12 @@ function App() {
       }`
       )
       .then((data) => setAboutData(data))
-      .catch(console.error);
+      .catch(console.error)
+
+      .finally(() => setLoading(false));
   }, []);
+
+  if (loading) return <Loading />;
 
   return (
     <>
@@ -75,7 +74,7 @@ function App() {
             ))}
         </div>
       </motion.div>
-      <div className="date">❍ {dateState.toLocaleString()}</div>
+      <Clock />
     </>
   );
 }

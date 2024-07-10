@@ -1,12 +1,12 @@
 :root {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   font-weight: 100;
   font-style: normal;
   font-weight: 300;
 
   color-scheme: light dark;
   --main: #e2e5eb;
-  --bg: #0f1012;
+  --bg: #000000;
   --sec: rgb(16, 16, 17);
   --accent: #ff3c00;
   color: var(--main);

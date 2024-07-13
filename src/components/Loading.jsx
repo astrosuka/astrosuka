@@ -8,7 +8,7 @@ export default function Loading() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className=""
+      className="p-6"
     >
       <p>Loading...</p>
     </motion.div>

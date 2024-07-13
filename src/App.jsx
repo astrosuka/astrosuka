@@ -5,11 +5,16 @@ import Loading from "./components/Loading";
 import sanityClient from "./client";
 import { PortableText } from "@portabletext/react";
 import Clock from "./components/Clock";
+import AudioWorks from "./components/AudioWorks";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [linksData, setLinksData] = useState(null);
   const [aboutData, setAboutData] = useState(null);
+  const [listOpen, setListOpen] = useState(false);
+  function handleListClick() {
+    setListOpen(!listOpen);
+  }
 
   useEffect(() => {
     sanityClient
@@ -63,6 +68,13 @@ function App() {
             ))}
         </div>
 
+        <button
+          onClick={handleListClick}
+          className="border-1 mb-2 rounded border border-gray-700 p-1 text-xs"
+        >
+          audio works
+        </button>
+
         <div className="flex flex-col gap-1 text-sm md:flex-row md:text-base">
           {linksData &&
             linksData.map((link) => (
@@ -76,6 +88,7 @@ function App() {
         </div>
       </motion.div>
       <Clock />
+      <AudioWorks listOpen={listOpen} handleListClick={handleListClick} />
     </div>
   );
 }

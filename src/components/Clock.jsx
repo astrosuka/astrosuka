@@ -5,5 +5,9 @@ export default function Clock() {
   useEffect(() => {
     setInterval(() => setDateState(new Date()), 1000);
   }, []);
-  return <div className="date">❍ {dateState.toLocaleString()}</div>;
+  return (
+    <div className="fixed bottom-3 left-6 text-xs md:left-auto md:right-6 md:text-sm">
+      {dateState.toLocaleString()} ❍
+    </div>
+  );
 }

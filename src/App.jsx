@@ -1,9 +1,9 @@
 import "./App.css";
 import { motion } from "framer-motion";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Loading from "./components/Loading";
 import sanityClient from "./client";
-import BlockContent from "@sanity/block-content-to-react";
+import { PortableText } from "@portabletext/react";
 import Clock from "./components/Clock";
 
 function App() {
@@ -15,9 +15,10 @@ function App() {
     sanityClient
       .fetch(
         `*[_type == "link"] | order(order asc) {
+        _id,
         linkText,
         linkUrl
-      }`
+      }`,
       )
       .then((data) => setLinksData(data))
       .catch(console.error);
@@ -25,8 +26,9 @@ function App() {
     sanityClient
       .fetch(
         `*[_type == "about"] {
+        _id,
         body
-      }`
+      }`,
       )
       .then((data) => setAboutData(data))
       .catch(console.error)
@@ -37,35 +39,34 @@ function App() {
   if (loading) return <Loading />;
 
   return (
-    <>
+    <div className="p-6">
       <motion.h1
         initial={{ translateX: -1000 }}
         animate={{ translateX: 0 }}
         transition={{ ease: [0.76, 0, 0.24, 1] }}
+        className="mb-4 text-3xl"
       >
         Astrosuka
       </motion.h1>
       <motion.div
-        className="mrgn"
+        className=""
         initial={{ translateX: -1000 }}
         animate={{ translateX: 0 }}
         transition={{ delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
       >
-        {aboutData &&
-          aboutData.map((text, index) => (
-            <span className="mrgn" key={index}>
-              <BlockContent
-                blocks={text.body}
-                projectId="42d1k3c6"
-                dataset="production"
-              />
-            </span>
-          ))}
+        <div className="mb-2 text-xs md:text-base">
+          {aboutData &&
+            aboutData.map((text) => (
+              <div key={text._id} className="mb-4">
+                <PortableText value={text.body} />
+              </div>
+            ))}
+        </div>
 
-        <div className="mrgn links">
+        <div className="flex flex-col gap-1 text-sm md:flex-row md:text-base">
           {linksData &&
-            linksData.map((link, index) => (
-              <span key={index}>
+            linksData.map((link) => (
+              <span key={link._id}>
                 <a href={link.linkUrl} target="_blank">
                   {link.linkText}
                 </a>
@@ -75,7 +76,7 @@ function App() {
         </div>
       </motion.div>
       <Clock />
-    </>
+    </div>
   );
 }
 

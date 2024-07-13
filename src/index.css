@@ -1,14 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  font-family: "IBM Plex Sans", sans-serif;
-  font-weight: 100;
+  font-family: "BIZ UDMincho", serif;
+  font-weight: 400;
   font-style: normal;
-  font-weight: 300;
 
   color-scheme: light dark;
-  --main: #e2e5eb;
+  --main: #c1c5cb;
   --bg: #000000;
   --sec: rgb(16, 16, 17);
-  --accent: #ff3c00;
+  /* --accent: #ff3c00; */
+  --accent: #4fd818;
   color: var(--main);
   background-color: var(--bg);
 
@@ -24,59 +28,34 @@
 }
 
 a {
-  color: inherit;
-  font-weight: 300;
+  color: #abd0fa;
   display: inline-block;
-  transition: 300ms background-size, 80ms transform, 550ms color;
+  transition:
+    300ms background-size,
+    80ms transform,
+    550ms color;
   background: linear-gradient(var(--accent), var(--accent)) bottom / 0px 50px
     no-repeat;
   background-position: left bottom;
-  user-select: none;
 }
 a:hover {
-  color: var(--main);
+  color: var(--bg);
   text-decoration: none;
   background-size: 100% 50px;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 2rem;
-  font-weight: 300;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     color: var(--bg);
-    background-color: var(--main);
+    background-color: #e4e6ec;
+  }
+
+  a {
+    color: #2f7ed8;
   }
 
   ::selection {
     color: var(--main);
     background-color: var(--bg);
-  }
-}
-
-.date {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  font-size: 0.75rem;
-}
-
-.mrgn {
-  margin-top: 1.25rem;
-  display: block;
-}
-
-@media (max-width: 700px) {
-  .links > * {
-    display: block;
   }
 }

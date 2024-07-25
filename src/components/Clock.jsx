@@ -6,8 +6,9 @@ export default function Clock() {
     setInterval(() => setDateState(new Date()), 1000);
   }, []);
   return (
-    <div className="fixed bottom-3 left-6 text-xs md:left-auto md:right-6 md:text-sm">
-      {dateState.toLocaleString()} ❍
+    <div className="flex flex-row-reverse gap-2 md:flex-row">
+      <span>{dateState.toLocaleString()}</span>
+      <span>❍</span>
     </div>
   );
 }

@@ -1,16 +1,18 @@
 import "./App.css";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Loading from "./components/Loading";
 import sanityClient from "./client";
 import { PortableText } from "@portabletext/react";
-import Clock from "./components/Clock";
+import Footer from "./components/Footer";
+import { LanguageContext } from "./utils/languageContext";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [linksData, setLinksData] = useState(null);
   const [aboutData, setAboutData] = useState(null);
   const [contactData, setContactData] = useState(null);
+  const { language } = useContext(LanguageContext);
 
   useEffect(() => {
     sanityClient
@@ -72,7 +74,11 @@ function App() {
           {aboutData &&
             aboutData.map((text) => (
               <div key={text._id} className="mt-4">
-                <PortableText value={text.body} />
+                {language === "en" ? (
+                  <PortableText value={text.body} />
+                ) : (
+                  <PortableText value={text.bodyEs} />
+                )}
               </div>
             ))}
         </div>
@@ -80,7 +86,8 @@ function App() {
           {contactData &&
             contactData.map((data) => (
               <p key={data._id}>
-                {data.text}: <a href={`mailto:${data.email}`}>{data.email}</a>
+                {data.text && (language === "en" ? data.text : data.textEs)}:{" "}
+                <a href={`mailto:${data.email}`}>{data.email}</a>
               </p>
             ))}
         </div>
@@ -97,7 +104,7 @@ function App() {
             ))}
         </div>
       </motion.div>
-      <Clock />
+      <Footer />
     </div>
   );
 }

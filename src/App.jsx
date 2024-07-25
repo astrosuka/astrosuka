@@ -10,6 +10,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [linksData, setLinksData] = useState(null);
   const [aboutData, setAboutData] = useState(null);
+  const [contactData, setContactData] = useState(null);
 
   useEffect(() => {
     sanityClient
@@ -27,10 +28,23 @@ function App() {
       .fetch(
         `*[_type == "about"] {
         _id,
-        body
+        body,
+        bodyEs,
       }`,
       )
       .then((data) => setAboutData(data))
+      .catch(console.error);
+
+    sanityClient
+      .fetch(
+        `*[_type == "contact"] {
+        _id,
+        text,
+        textEs,
+        email,
+      }`,
+      )
+      .then((data) => setContactData(data))
       .catch(console.error)
 
       .finally(() => setLoading(false));
@@ -54,12 +68,20 @@ function App() {
         animate={{ translateX: 0 }}
         transition={{ delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
       >
-        <div className="mb-2 text-xs md:text-base">
+        <div className="text-xs md:text-base">
           {aboutData &&
             aboutData.map((text) => (
-              <div key={text._id} className="mb-4">
+              <div key={text._id} className="mt-4">
                 <PortableText value={text.body} />
               </div>
+            ))}
+        </div>
+        <div className="mb-4 text-xs md:text-base">
+          {contactData &&
+            contactData.map((data) => (
+              <p key={data._id}>
+                {data.text}: <a href={`mailto:${data.email}`}>{data.email}</a>
+              </p>
             ))}
         </div>
 

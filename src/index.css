@@ -29,19 +29,11 @@
 
 a {
   color: #abd0fa;
-  display: inline-block;
-  transition:
-    300ms background-size,
-    80ms transform,
-    550ms color;
-  background: linear-gradient(var(--accent), var(--accent)) bottom / 0px 50px
-    no-repeat;
-  background-position: left bottom;
+  transition: 200ms;
 }
 a:hover {
+  background-color: var(--main);
   color: var(--bg);
-  text-decoration: none;
-  background-size: 100% 50px;
 }
 
 @media (prefers-color-scheme: light) {

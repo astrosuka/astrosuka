@@ -57,18 +57,18 @@ function App() {
   return (
     <div className="p-6">
       <motion.h1
-        initial={{ translateX: -1000 }}
-        animate={{ translateX: 0 }}
-        transition={{ ease: [0.76, 0, 0.24, 1] }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
         className="mb-4 text-3xl"
       >
         Astrosuka
       </motion.h1>
       <motion.div
         className=""
-        initial={{ translateX: -1000 }}
-        animate={{ translateX: 0 }}
-        transition={{ delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3, ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
       >
         <div className="text-xs md:text-base">
           {aboutData &&

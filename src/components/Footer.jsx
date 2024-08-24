@@ -6,14 +6,13 @@ export default function Footer() {
   const { language, setLanguage } = useContext(LanguageContext);
 
   return (
-    <footer className="fixed bottom-6 left-6 flex flex-row-reverse gap-2 text-xs md:left-auto md:right-6 md:flex-row md:text-sm">
+    <footer className="fixed bottom-6 left-6 flex gap-2 text-xs md:text-sm">
       <button
-        className="rounded-sm border border-slate-300 bg-slate-100 px-2 text-black sm:hover:font-bold sm:hover:invert"
+        className="rounded-md border border-[#c1c5cb] p-1"
         onClick={() => setLanguage(language === "en" ? "es" : "en")}
       >
         {language === "en" ? "esp" : "eng"}
       </button>
-      <Clock />
     </footer>
   );
 }

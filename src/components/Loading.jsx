@@ -10,7 +10,7 @@ export default function Loading() {
       transition={{ duration: 0.5 }}
       className="p-6"
     >
-      <p>Loading...</p>
+      <p>...</p>
     </motion.div>
   );
 }

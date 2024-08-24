@@ -68,7 +68,7 @@ function App() {
         className=""
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
+        transition={{ delay: 0.4, ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
       >
         <div className="text-xs md:text-base">
           {aboutData &&
